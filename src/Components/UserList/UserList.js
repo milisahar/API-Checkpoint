@@ -7,7 +7,6 @@ const UserList = () => {
     const getUsers = () => {
 
         axios.get("https://jsonplaceholder.typicode.com/users")
-            .then((response) => console.log("response", response))
             .then((response) => setUserList(response.data))
             .catch((error) => console.log(error))
 
@@ -17,8 +16,10 @@ const UserList = () => {
     }, [])
     console.log("list", userList)
     return (
-        <div>
-
+        <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap" }}>
+            {
+                userList.map((user) => <UserCard user={user} />)
+            }
 
         </div>
     )
